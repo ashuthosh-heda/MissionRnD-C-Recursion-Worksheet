@@ -23,8 +23,19 @@
 */
 #include "stdafx.h"
 
+int get_steps_wrapper(int s){
+	if (s <= 1)
+		return s;
+	else
+		return get_steps_wrapper(s - 1) + get_steps_wrapper(s - 2);
+}
 
 int get_steps(int s)
 {
-	return 0;
+	if (s < 0)		//Error Case (Negative Steps)
+		return -1;
+	if (s == 1 || s == 0)
+		return s;
+	else
+		return get_steps_wrapper(s+1);
 }
